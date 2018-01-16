@@ -12,14 +12,68 @@
   * this代表调用函数的当前对象
   * 在定义函数时, this还没有确定, 只有在执行时才动态确定(绑定)的
 2. 如何确定this的值?
-  * test()
-  * obj.test()
-  * new test()
-  * test.call(obj)  test.apply(obj)
+  * test(): window
+  * obj.test(): obj
+  * new test(): 创建的对象
+  * test.call(obj)  test.apply(obj): obj
+  * DOM事件回调函数: 绑定事件的dom元素对象
+  * 定时器回调函数: window
+  * ajax回调函数: window
+  * 数组遍历相关的回调回调函数: window
 前置知识:
   * 本质上任何函数在执行时都是通过某个对象调用的
+
 -->
 <script type="text/javascript">
+  function Person(color) {
+    console.log(this)
+    this.color = color;
+    this.getColor = function () {
+      console.log(this)
+      return this.color;
+    };
+    this.setColor = function (color) {
+      console.log(this)
+      this.color = color;
+    };
+  }
+
+  Person("red"); //this是谁?  window
+
+  var p = new Person("yello"); //this是谁?  p
+
+  p.getColor(); //this是谁?  p
+
+  var obj = {};
+  p.setColor.call(obj, "black"); //this是谁?  obj
+
+  var test = p.setColor;
+  test(); //this是谁?  window
+
+  function fun1() {
+    function fun2() {
+      console.log(this);
+    }
+
+    fun2(); //this是谁?   window
+  }
+
+  fun1();
+
+
+  // 1. 执行函数定义: 创建函数对象
+  // 2. 执行函数: 执行函数体中语句(必须在执行函数定义之后)
+
+
+  function fn() {
+    console.log(this)
+  }
+
+  var obj = {n: 1}
+  // bind是产生个新的函数对象(1. 指定了this, 2. 函数定义与原来的函数一样, 3. 原来的函数没有变化)
+  var fn2 = fn.bind(obj)
+  fn()  // window
+  fn2()  // obj
 </script>
 </body>
 </html>

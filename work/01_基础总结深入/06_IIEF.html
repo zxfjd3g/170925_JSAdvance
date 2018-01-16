@@ -14,6 +14,11 @@
   * 不污染外部命名空间
 -->
 <script type="text/javascript">
+  (function () {
+    var a = 3
+    a++
+    console.log(a)
+  })()
 
 </script>
 
