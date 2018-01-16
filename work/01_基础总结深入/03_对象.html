@@ -26,6 +26,37 @@
 -->
 <script type="text/javascript">
 
+  var p = {
+    name: 'Tom',
+    age: 18,
+    setName: function (name) {
+      this.name = name
+    },
+    setAge (age) {
+      this.age = age
+    }
+  }
+
+  p.setName('Jack')
+  console.log(p.name)
+  p['setAge'](20)
+  console.log(p['age'])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
