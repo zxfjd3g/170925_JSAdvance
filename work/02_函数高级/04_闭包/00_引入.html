@@ -13,6 +13,34 @@
 需求: 点击某个按钮, 提示"点击的是第n个按钮"
 -->
 <script type="text/javascript">
+  const btns = document.getElementsByTagName('button')
+  /*for (var i = 0; i < btns.length; i++) {
+    var btn = btns[i]
+    btn.onclick = function () {
+      alert('第'+(i+1)+'个')
+    }
+  }*/
+  // i是全局变量, 点击的回调函数执行时i已经是3
+
+  /*for (var i = 0; i < btns.length; i++) {
+    var btn = btns[i]
+    btn.index = i // 让每个button保存自己的下标
+    btn.onclick = function () {
+      alert('第'+(this.index+1)+'个')
+    }
+  }*/
+
+  // 使用闭包解决问题(循环遍历加监听的问题)
+  for (var i = 0; i < btns.length; i++) {
+    (function (i) {
+      var btn = btns[i]
+      btn.onclick = function () {
+        alert('第'+(i+1)+'个')
+      }
+    })(i)
+  }
+
+
 </script>
 </body>
 

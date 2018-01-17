@@ -11,6 +11,28 @@
 2. 将函数作为实参传递给另一个函数调用
 -->
 <script type="text/javascript">
+  // 1. 将函数作为另一个函数的返回值
+  function fn1() {
+    var n = 2
+    function fn2() {
+      n++
+      console.log(n)
+    }
+    // 返回内部函数
+    return fn2
+  }
+  var f = fn1()  // f保存了内部函数对象的引用, 保证内部函数对象没有成为垃圾对象
+  f() // 3
+  f() // 4
+
+  // 2. 将函数作为实参传递给另一个函数调用
+  function showDelay(msg, time) {
+    setTimeout(function () {
+      alert(msg)
+    }, time)
+  }
+  showDelay('写什么!', 2000)  // 闭包存在的时间为2s
+
 </script>
 </body>
 </html>
