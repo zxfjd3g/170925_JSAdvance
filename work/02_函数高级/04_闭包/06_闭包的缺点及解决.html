@@ -14,6 +14,22 @@
   * 及时释放
 -->
 <script type="text/javascript">
+  function fn1() {
+    var n = 2
+    function fn2() {
+      n++
+      console.log(n)
+    }
+    // 返回内部函数
+    return fn2
+  }
+  var f = fn1()  // f保存了内部函数对象的引用, 保证内部函数对象没有成为垃圾对象
+  f() // 3
+  f() // 4
+
+  // 不再需要时
+  // f = null
+
 </script>
 </body>
 </html>
