@@ -25,6 +25,32 @@
   * 后面在某个时刻才会执行回调代码
 -->
 <script type="text/javascript">
+  function fn1() {
+    console.log('fn1()')
+  }
+  fn1()
+
+  setTimeout(function () {
+    console.log('到点了00000')
+  }, 0)
+  setTimeout(function () {
+    console.log('到点了33333')
+  }, 3000)
+  setTimeout(function () {
+    console.log('到点了2222')
+    alert('++++++')
+  }, 2000)
+
+  function fn2() {
+    console.log('fn2()')
+  }
+
+  fn2()
+
+  console.log('alert之前')
+  alert('------')  // 暂停主线程的执行和分线程的计时, 点击确定后, 恢复主线程的执行和分线程的计时
+  console.log('alert之后')
+
 </script>
 </body>
 </html>

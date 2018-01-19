@@ -18,6 +18,32 @@
   * 事件循环模型(后面讲)
 -->
 <script type="text/javascript">
+
+ document.getElementById('btn').onclick = function () {
+   const start = Date.now()
+   setTimeout(function () {
+     console.log('执行了', Date.now()-start)
+   }, 200)
+
+   // 在启动定时器后执行一段长时间的任务
+   for (var i = 0; i < 100000000; i++) {
+
+   }
+   console.log(Date.now()-start)
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
