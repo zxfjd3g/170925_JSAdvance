@@ -19,6 +19,31 @@
     1. 子类型的原型为父类型的一个实例对象
 -->
 <script type="text/javascript">
+  function Parent() {
+    this.pProp = 'The Parent prop'
+  }
+  Parent.prototype.showPProp = function () {
+    console.log('showPProp()', this.pProp)
+  }
+
+  function Child() {
+    this.cProp = 'The Child prop'
+  }
+  //让子类型的原型指向父类型的实例
+  Child.prototype = new Parent()
+  // 让子类型原型对象的constructor指向子类型
+  Child.prototype.constructor = Child
+
+  Child.prototype.showCProp = function () {
+    console.log('showCProp()', this.cProp)
+  }
+
+
+  var child = new Child()
+  child.showCProp()
+  child.toString() // Child的原型对象是Object的实例
+  child.showPProp()
+  console.log(child.constructor===Child, child)
 
 </script>
 </body>
