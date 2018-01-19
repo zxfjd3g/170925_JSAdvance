@@ -13,6 +13,24 @@
   * 问题: 每个对象都有相同的数据, 浪费内存
 -->
 <script type="text/javascript">
+  function Person(name, age) {
+    this.name = name
+    this.age = age
+    this.setName = function (name) {
+      this.name = name
+    }
+  }
+  function Dog(name, color) {
+    this.name = name
+    this.color = color
+  }
+
+  var p = new Person('Bob', 18)
+  var p2 = new Person('Bob2', 18)
+  var p3 = new Person('Bob3', 18)
+  var d = new Dog('波黑', 'white')
+
+  console.log(p instanceof Person, d instanceof Dog) // true, true
 
 </script>
 </body>

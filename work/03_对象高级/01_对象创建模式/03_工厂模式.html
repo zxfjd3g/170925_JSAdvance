@@ -12,6 +12,35 @@
   * 问题: 对象没有一个具体的类型, 都是Object类型
 -->
 <script type="text/javascript">
+  // 工厂函数: 每次调用返回一个新的对象
+  function createPerson(name, age) {  // 创建人对象的工厂函数
+    var p = {
+      name,
+      age,
+      setName (name) {
+        this.name = name
+      }
+    }
+    return p
+  }
+  var p1 = createPerson('Jack', 12)
+  var p2 = createPerson('Tom', 13)
+
+  //狗工厂
+  function createDog(name, color) {
+    var d = {
+      name,
+      color
+    }
+
+    return d
+  }
+  var d1 = createDog('旺财', 'yellow')
+  var d2 = createDog('大黄', 'black')
+
+  // p1与d1都只是Object类型, 不能区别类型
+
+
 </script>
 </body>
 </html>
