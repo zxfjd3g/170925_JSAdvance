@@ -15,6 +15,30 @@
 在分线程计算: 不会阻塞主线程
 -->
 <script type="text/javascript">
+  //  F(n)=F(n-1)+F(n-2)
+  function fibonacci (number) {
+    return number<=2 ? 1 : fibonacci(number-1) + fibonacci(number-2)
+  }
+
+  const numberInput = document.getElementById('number')
+  document.getElementById('btn1').onclick = function () {
+    const number = numberInput.value * 1
+    alert(fibonacci(number))
+  }
+  document.getElementById('btn2').onclick = function () {
+    const number = numberInput.value * 1
+
+    const worker = new Worker('worker.js')
+
+    // 主线程向分线程发送消息(数据)
+    worker.postMessage(number)
+    console.log('主线程向分线程发送消息', number)
+    // 主线程接收分线程返回的结果数据
+    worker.onmessage = function (event) {
+      alert(event.data)
+      console.log('主线程接收分线程返回的结果数据', event.data)
+    }
+  }
 </script>
 </body>
 
